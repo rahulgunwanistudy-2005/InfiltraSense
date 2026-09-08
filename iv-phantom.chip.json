@@ -1,0 +1,70 @@
+{
+  "name": "IV SITE PHANTOM",
+  "author": "InfiltraSense",
+  "pins": [
+    "VCC",
+    "GND",
+    "NORMAL",
+    "MOVE",
+    "LIFT",
+    "SHIFT",
+    "FLUID",
+    "FREE",
+    "RX",
+    "TX"
+  ],
+  "controls": [
+    {
+      "id": "fluid",
+      "label": "Fluid accumulation (%)",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "id": "motion",
+      "label": "Arm motion (%)",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "id": "contact",
+      "label": "Electrode contact (%)",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "id": "shift",
+      "label": "Mechanical shift (%)",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    {
+      "id": "expansion",
+      "label": "Independent expansion (%)",
+      "type": "range",
+      "min": 0,
+      "max": 20,
+      "step": 0.5
+    },
+    {
+      "id": "temperature",
+      "label": "Local temperature (C)",
+      "type": "range",
+      "min": 32,
+      "max": 40,
+      "step": 0.1
+    }
+  ],
+  "display": {
+    "width": 220,
+    "height": 110
+  }
+}

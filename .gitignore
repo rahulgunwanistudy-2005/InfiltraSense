@@ -1,0 +1,5 @@
+.DS_Store
+.pio/
+.vscode/*.log
+wokwi.vcd
+*.vcd

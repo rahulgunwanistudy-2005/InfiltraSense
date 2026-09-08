@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "author": "InfiltraSense",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-text",
+      "id": "title",
+      "top": -140,
+      "left": 0,
+      "attrs": { "text": "I N F I L T R A S E N S E  /  INTERACTIVE DIGITAL TWIN", "fontSize": "28" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "sub",
+      "top": -98,
+      "left": 0,
+      "attrs": {
+        "text": "Synthetic sensing  •  Signal integrity  •  Edge inference  •  Explainable alert control",
+        "fontSize": "14"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "guide",
+      "top": -63,
+      "left": 0,
+      "attrs": {
+        "text": "START ▶  Wait 5s for baseline. Try scenarios. Open phantom + FREE for sliders.",
+        "fontSize": "14"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "j",
+      "top": -15,
+      "left": 0,
+      "attrs": { "text": "01  JUDGE SCENARIOS", "fontSize": "18" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b0",
+      "top": 35,
+      "left": 5,
+      "attrs": { "color": "green", "key": "1", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b1",
+      "top": 102,
+      "left": 5,
+      "attrs": { "color": "blue", "key": "2", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b2",
+      "top": 169,
+      "left": 5,
+      "attrs": { "color": "orange", "key": "3", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b3",
+      "top": 236,
+      "left": 5,
+      "attrs": { "color": "yellow", "key": "4", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b4",
+      "top": 303,
+      "left": 5,
+      "attrs": { "color": "red", "key": "5", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "b5",
+      "top": 370,
+      "left": 5,
+      "attrs": { "color": "purple", "key": "6", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "ph",
+      "top": -15,
+      "left": 255,
+      "attrs": { "text": "02  IV SITE PHANTOM", "fontSize": "18" }
+    },
+    { "type": "chip-iv-phantom", "id": "phantom", "top": 65, "left": 320, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "ex",
+      "top": 220,
+      "left": 315,
+      "attrs": {
+        "text": "Bars: fluid / motion / contact\nClick phantom for sliders.\nFREE applies slider values.",
+        "fontSize": "13"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "sig",
+      "top": 310,
+      "left": 315,
+      "attrs": {
+        "text": "SYNTHETIC MEASUREMENTS\nLF/HF bio-Z | strain\nTemperature | motion\nElectrode contact\nUART simulation transport",
+        "fontSize": "13"
+      }
+    },
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 48, "left": 645, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "edge",
+      "top": -15,
+      "left": 610,
+      "attrs": { "text": "03  EDGE POD", "fontSize": "18" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "sur",
+      "top": 410,
+      "left": 585,
+      "attrs": { "text": "ESP32-S3\nMAX78002 execution surrogate", "fontSize": "14" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": 30,
+      "left": 900,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "clin",
+      "top": -15,
+      "left": 875,
+      "attrs": { "text": "04  CLINICIAN VIEW", "fontSize": "18" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led0",
+      "top": 170,
+      "left": 900,
+      "attrs": { "color": "green", "label": "NORMAL" }
+    },
+    { "type": "wokwi-resistor", "id": "r0", "top": 233, "left": 900, "attrs": { "value": "330" } },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 170,
+      "left": 966,
+      "attrs": { "color": "yellow", "label": "WATCH" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 233, "left": 966, "attrs": { "value": "330" } },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 170,
+      "left": 1032,
+      "attrs": { "color": "red", "label": "CHECK" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 233,
+      "left": 1032,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 302,
+      "left": 900,
+      "attrs": { "volume": "0.15" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "ack",
+      "top": 310,
+      "left": 1008,
+      "attrs": { "color": "white", "label": "ACK / MUTE", "key": "a", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "target",
+      "top": 485,
+      "left": 0,
+      "attrs": {
+        "text": "REAL ARCHITECTURE  AD5940 + strain + MAX30208 + LSM6DSV80X → MAX78002 → nRF5340 → clinician",
+        "fontSize": "14"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "disclaimer",
+      "top": 521,
+      "left": 0,
+      "attrs": {
+        "text": "Executable architectural demonstration. Synthetic transfer model + hand-authored classifier. NOT clinically validated.",
+        "fontSize": "13"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "footer",
+      "top": 551,
+      "left": 0,
+      "attrs": {
+        "text": "ALERT POLICY  Trusted signals + independent modalities + 4s persistence. Alarm clears only after recovery + acknowledgement.",
+        "fontSize": "13"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label0",
+      "top": 47,
+      "left": 80,
+      "attrs": { "text": "1  NORMAL / RESTORE" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label1",
+      "top": 114,
+      "left": 80,
+      "attrs": { "text": "2  MOVE ARM" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label2",
+      "top": 181,
+      "left": 80,
+      "attrs": { "text": "3  LIFT ELECTRODE" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label3",
+      "top": 249.6,
+      "left": 76.8,
+      "attrs": { "text": "4  CATHETER SHIFT" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label4",
+      "top": 315,
+      "left": 80,
+      "attrs": { "text": "5  INFILTRATION" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label5",
+      "top": 382,
+      "left": 80,
+      "attrs": { "text": "6  FREE EXPERIMENT" }
+    },
+    { "type": "wokwi-gnd", "id": "g0", "top": 60, "left": -35, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "g1", "top": 127, "left": -35, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "g2", "top": 194, "left": -35, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "g3", "top": 261, "left": -35, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "g4", "top": 328, "left": -35, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "g5", "top": 395, "left": -35, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:10", "r0:1", "green", [] ],
+    [ "r0:2", "led0:A", "green", [] ],
+    [ "led0:C", "esp:GND.2", "black", [] ],
+    [ "esp:11", "r1:1", "yellow", [] ],
+    [ "r1:2", "led1:A", "yellow", [] ],
+    [ "led1:C", "esp:GND.2", "black", [] ],
+    [ "esp:12", "r2:1", "red", [] ],
+    [ "r2:2", "led2:A", "red", [] ],
+    [ "led2:C", "esp:GND.2", "black", [] ],
+    [ "ack:1.l", "esp:14", "purple", [] ],
+    [ "ack:2.l", "esp:GND.2", "black", [] ],
+    [ "esp:13", "buzzer:2", "red", [] ],
+    [ "buzzer:1", "esp:GND.2", "black", [] ],
+    [ "esp:8", "oled:SDA", "#14b8a6", [] ],
+    [ "esp:9", "oled:SCL", "#3b82f6", [] ],
+    [ "esp:3V3.1", "oled:VCC", "red", [] ],
+    [ "esp:GND.2", "oled:GND", "black", [] ],
+    [ "phantom:TX", "esp:18", "#14b8a6", [] ],
+    [ "esp:17", "phantom:RX", "#3b82f6", [] ],
+    [ "esp:3V3.2", "phantom:VCC", "red", [] ],
+    [ "esp:GND.1", "phantom:GND", "black", [] ],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "b0:2.l", "g0:GND", "black", [ "h-20" ] ],
+    [ "b0:1.r", "phantom:NORMAL", "green", [ "h160", "v-20" ] ],
+    [ "b1:2.l", "g1:GND", "black", [ "h-20" ] ],
+    [ "b1:1.r", "phantom:MOVE", "blue", [ "h168", "v-24" ] ],
+    [ "b2:2.l", "g2:GND", "black", [ "h-20" ] ],
+    [ "b2:1.r", "phantom:LIFT", "orange", [ "h176", "v-28" ] ],
+    [ "b3:2.l", "g3:GND", "black", [ "h-20" ] ],
+    [ "b3:1.r", "phantom:SHIFT", "yellow", [ "h184", "v-32" ] ],
+    [ "b4:2.l", "g4:GND", "black", [ "h-20" ] ],
+    [ "b4:1.r", "phantom:FLUID", "red", [ "h192", "v-36" ] ],
+    [ "b5:2.l", "g5:GND", "black", [ "h-20" ] ],
+    [ "b5:1.r", "phantom:FREE", "purple", [ "h200", "v-40" ] ]
+  ],
+  "serialMonitor": { "display": "always", "newline": "lf" },
+  "dependencies": {}
+}
