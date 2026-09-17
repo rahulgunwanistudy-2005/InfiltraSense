@@ -2,6 +2,7 @@
 version = 1
 firmware = 'firmware.bin'
 elf = 'firmware.elf'
+rfc2217ServerPort = 4000
 
 [[chip]]
 name = 'iv-phantom'

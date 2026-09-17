@@ -26,7 +26,7 @@
       "top": -63,
       "left": 0,
       "attrs": {
-        "text": "START ▶  Wait 5s for baseline. Try scenarios. Open phantom + FREE for sliders.",
+        "text": "START ▶  Wait 5s for baseline. Live threshold graphs open automatically. Try scenarios.",
         "fontSize": "14"
       }
     },
@@ -296,6 +296,6 @@
     [ "b5:2.l", "g5:GND", "black", [ "h-20" ] ],
     [ "b5:1.r", "phantom:FREE", "purple", [ "h200", "v-40" ] ]
   ],
-  "serialMonitor": { "display": "always", "newline": "lf" },
+  "serialMonitor": { "display": "plotter", "newline": "lf" },
   "dependencies": {}
 }

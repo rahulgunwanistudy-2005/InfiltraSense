@@ -13,7 +13,11 @@ This repository is an executable architecture demonstration. It is not clinicall
 5. Click the green play button, or open the Command Palette with `Shift+Command+P` and run `Wokwi: Start Simulator`.
 6. Allow about five seconds of simulation time for baseline acquisition.
 
+The Wokwi Serial Plotter opens automatically and shows impedance, strain, motion, and temperature relative to their own detection thresholds. See [SIGNAL-GRAPHS.md](SIGNAL-GRAPHS.md) for the trace meanings and the complete output decision path.
+
 The committed `firmware.bin`, `firmware.elf`, and `iv-phantom.chip.wasm` files make the first run build-free.
+
+The VS Code simulation also exposes the ESP32-S3 serial console at `rfc2217://localhost:4000`, which can be used for automated checks or an external serial monitor.
 
 ## Interactive scenarios
 
@@ -24,6 +28,8 @@ The committed `firmware.bin`, `firmware.elf`, and `iv-phantom.chip.wasm` files m
 - **INFILTRATION** — gradually changes impedance and strain; persistent corroborated evidence progresses from `WATCH` to `CHECK IV`.
 - **ACK / MUTE** — silences the buzzer while retaining the visible alert.
 - **FREE EXPERIMENT** — enables direct adjustment of the phantom controls.
+
+On the graph, `100` is the threshold for each sensor trace. An alert candidate requires both impedance traces and strain to cross 100 while motion remains below 100 and the sample remains trusted. The final `CHECK_IV` trace rises only after this evidence persists continuously for four seconds. Temperature is supporting context and never triggers an alert by itself.
 
 See [START-HERE.md](START-HERE.md) for the detailed walkthrough and [VERIFICATION.md](VERIFICATION.md) for the completed checks.
 
@@ -49,3 +55,13 @@ If `iv-phantom.chip.c` changes, rebuild the custom chip with Wokwi CLI:
 ```sh
 wokwi-cli chip compile iv-phantom.chip.c -o iv-phantom.chip.wasm
 ```
+
+## Regression tests
+
+Run the host-side safety-policy suite on macOS or Linux:
+
+```sh
+./tests/run-tests.sh
+```
+
+The suite compiles the actual `sketch.ino` policy code with lightweight hardware stubs and checks baseline handling, manual reacquisition settling, artifacts, contact failure, false-escalation controls, persistent infiltration, alert acknowledgement, recovery, and stream timeout.

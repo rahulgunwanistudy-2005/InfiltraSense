@@ -10,7 +10,11 @@ This folder contains a prebuilt ESP32-S3 firmware image and the compiled WebAsse
 4. Open `diagram.json` from the Explorer sidebar.
 5. Click the green play button at the upper-left of the diagram view. Alternatively, press `Shift+Command+P`, type `Wokwi: Start Simulator`, and press Return.
 6. If Wokwi asks for activation, follow its sign-in/trial prompt. Local simulation requires Wokwi activation.
-7. Wait about five seconds of **simulation time** for baseline acquisition. Then press the scenario buttons in the diagram.
+7. The live Serial Plotter opens automatically. Wait about five seconds of **simulation time** for baseline acquisition, then press the scenario buttons in the diagram.
+
+The simulator exposes its serial evidence console at `rfc2217://localhost:4000` while it is running.
+
+Each graph trace is normalized to its own rule: `100` means that signal has reached its threshold. Follow [SIGNAL-GRAPHS.md](SIGNAL-GRAPHS.md) for the graph legend and the exact detection sequence.
 
 ## What should happen
 
@@ -43,5 +47,7 @@ If you edit `iv-phantom.chip.c`, recompile it with Wokwi CLI:
 ```text
 wokwi-cli chip compile iv-phantom.chip.c -o iv-phantom.chip.wasm
 ```
+
+Run `./tests/run-tests.sh` after firmware-policy changes. The test suite compiles the real policy code and checks all guided safety scenarios, including the one-second quiet period required after a manual `R` reacquisition request.
 
 This is an executable digital twin for architecture demonstration only. It is not clinically validated and is not a diagnostic device.
